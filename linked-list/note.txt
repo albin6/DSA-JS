@@ -1,0 +1,7 @@
+A linked list is a linear data structure where each element (called a node) contains two parts:
+   1) Data: The value or the data the node holds.
+   2) Next: A reference (or pointer) to the next node in the sequence.
+
+The first node in the linked list is know as the head and the last is know as the tail is gonna have a reference to null
+
+Unlike arrays, linked lists are not stored in contiguous/sequential memory locations instead they are linked together using a pointer, making them dynamic and efficient for insertions and deletions.
