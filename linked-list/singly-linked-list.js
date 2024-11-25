@@ -73,13 +73,18 @@ class LinkedList {
     let current = this.head;
     let prev = null;
     let i = 1;
-    while (i < index) {
-      prev = current;
-      current = current.next;
-      i++;
-    }
+    if (index == 1) {
+      this.head = current.next;
+    } else {
+      while (i < index) {
+        prev = current;
+        current = current.next;
+        i++;
+      }
 
-    prev.next = current.next;
+      prev.next = current.next;
+    }
+    this.size--;
   }
 
   // get node at a specific index
