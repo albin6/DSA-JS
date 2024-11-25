@@ -36,6 +36,70 @@ class LinkedList {
     this.size++;
   }
 
+  // inserting node at a specific index
+  addNodeAtIndex(data, index) {
+    if (index < 1 || index > this.size) {
+      throw new Error("Invalid index");
+    }
+
+    const node = new Node(data);
+
+    if (index == 1) {
+      node.next = this.head;
+      this.head = node;
+    } else {
+      let current = this.head;
+      let prev = null;
+      let i = 1;
+
+      while (i < index) {
+        prev = current;
+        current = current.next;
+        i++;
+      }
+
+      node.next = current;
+      prev.next = node;
+    }
+    this.size++;
+  }
+
+  // removing node from a specific index
+  removeNodeAtIndex(index) {
+    if (index < 1 || index > this.size) {
+      throw new Error("Invalid index");
+    }
+
+    let current = this.head;
+    let prev = null;
+    let i = 1;
+    while (i < index) {
+      prev = current;
+      current = current.next;
+      i++;
+    }
+
+    prev.next = current.next;
+  }
+
+  // get node at a specific index
+  getNodeAtIndex(index) {
+    if (index < 1 || index > this.size) {
+      throw new Error("Invalid index");
+    }
+
+    let current = this.head;
+    let i = 1;
+    while (current) {
+      if (index == i) {
+        console.log("data =>", current.data);
+        return;
+      }
+      i++;
+      current = current.next;
+    }
+  }
+
   // print the data in the list
   printListData() {
     let current = this.head;
@@ -53,5 +117,11 @@ ll.addNodeFirst(200);
 ll.addNodeFirst(300);
 
 ll.addNodeLast(400);
+ll.addNodeLast(500);
+ll.addNodeAtIndex(250, 3);
+
+// ll.getNodeAtIndex(0);
+
+ll.removeNodeAtIndex(3);
 
 ll.printListData();
