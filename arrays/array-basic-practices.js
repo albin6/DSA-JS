@@ -94,4 +94,29 @@ function removeDuplicates(arr) {
 const arr = [0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 4];
 const numberOfUniqueElements = removeDuplicates(arr);
 
-console.log(numberOfUniqueElements);
+// console.log(numberOfUniqueElements);
+
+// find first non-repeating element in an array
+// [8, 7, 6, 8, 4, 7, 2, 4] => 6
+
+function firstUniqueElement(arr) {
+  const frequency = {};
+
+  for (const num of arr) {
+    frequency[num] = (frequency[num] || 0) + 1;
+  }
+  for (const num of arr) {
+    if (frequency[num] === 1) {
+      return num;
+    }
+  }
+
+  return null; // if no element found
+}
+
+// Time Complexity - O(n)
+// Space Complexity - O(n)
+
+const firstUnique = firstUniqueElement([8, 7, 6, 8, 4, 7, 2, 4]);
+
+console.log(firstUnique);
