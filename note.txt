@@ -5,3 +5,9 @@ A linked list is a linear data structure where each element (called a node) cont
 The first node in the linked list is know as the head and the last is know as the tail is gonna have a reference to null
 
 Unlike arrays, linked lists are not stored in contiguous/sequential memory locations instead they are linked together using a pointer, making them dynamic and efficient for insertions and deletions.
+
+A doubly linked list (DLL) is a special type of linked list in which each node contains a pointer to the previous node as well as the next node of the linked list.
+
+   1) data: to contain respective node value
+   2) next: to link the next node with the default value as null.
+   3) prev: to link the previous node with the default value as null.
