@@ -1,0 +1,81 @@
+Beginner Problems
+-----------------
+
+1) Create a Linked List
+
+Write a program to create a singly linked list with the given elements.
+Print the elements of the linked list.
+
+2) Insert at the Beginning
+
+Write a function to insert a node at the beginning of the linked list.
+
+3) Insert at the End
+
+Write a function to insert a node at the end of the linked list.
+
+4) Delete a Node by Value
+
+Write a function to delete the first occurrence of a node with a given value.
+
+5) Search for a Value
+
+Write a function to search for a specific value in the linked list. Return true if found, otherwise false.
+
+6) Count the Nodes
+
+Write a function to count the total number of nodes in the linked list.
+
+7) Find the nth Node
+
+Write a function to return the value of the node at the n-th position (0-based index).
+
+8) Delete the Entire List
+
+Write a function to delete all nodes in the linked list, making it empty.
+
+Slightly Challenging Problems
+-----------------------------
+
+1) Reverse a Linked List
+
+Write a function to reverse the singly linked list.
+
+2) Remove Duplicates from Unsorted List
+
+Write a function to remove duplicate values from an unsorted linked list.
+
+3) Find the Middle Element
+
+Write a function to find the middle node of the linked list. If there are two middle nodes, return the second one.
+
+4) Check if a Linked List is Circular
+
+Write a function to determine if the linked list is circular (i.e., if it loops back to an earlier node).
+
+5) Find the nth Node from the End
+
+Write a function to find the value of the n-th node from the end of the linked list.
+
+Tasks to Test Understanding
+---------------------------
+
+1) Insert in a Sorted Linked List
+
+Write a function to insert a node in the correct position in a sorted linked list.
+
+2) Split a Linked List into Two Halves
+
+Write a function to split a linked list into two halves. If the list has an odd number of nodes, the extra node should go to the first half.
+
+3) Merge Two Linked Lists
+
+Write a function to merge two singly linked lists into one.
+
+4) Find the Largest Node
+
+Write a function to find the node with the maximum value in the linked list.
+
+5) Delete Alternate Nodes
+
+Write a function to delete every alternate node in the linked list.
