@@ -1,0 +1,19 @@
+Linear Search
+-------------
+Linear search is a straightforward method of searching where you traverse through the array sequentially to find the desired element.
+
+How It Works:
+    1) Start from the first element.
+    2) Compare each element with the target value.
+    3) If a match is found, return the index of the element.
+    4) If no match is found by the end of the array, return an indication (e.g., -1).
+
+Advantages:
+    => Can be used on both sorted and unsorted arrays.
+    => Simple to implement.
+Disadvantages:
+    => Inefficient for large datasets as it requires O(n) time in the worst case.
+
+Time Complexity:
+    => Best Case: O(1) (if the element is at the first position).
+    => Worst Case: O(n) (if the element is at the last position or not present).
