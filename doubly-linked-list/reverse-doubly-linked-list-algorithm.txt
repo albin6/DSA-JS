@@ -1,0 +1,28 @@
+Reversing a Doubly Linked List
+------------------------------
+A doubly linked list has nodes with next and prev pointers. The goal is to reverse the direction of both pointers.
+
+Algorithm:
+    1) Traverse the list:
+        => Swap the 'next' and 'prev' pointers for each node.
+        => Move to the next node (which is the original 'prev' due to the swap).
+    2) Update the head of the list to the last node encountered (the original tail).
+
+
+reverseDoublyLinkedList(head) {
+    let current = this.head;
+    let newHead = null;
+
+    while(current) {
+        // Swap the next and prev pointers
+        [current.next, current.prev] = [current.prev, current.next];
+        // Update newHead to the current node
+        newHead = current;
+        // Move to the next node (original prev)
+        current = current.prev
+    }
+
+    return newHead
+}
+
+Its very efficient and operate in o(n) time complexity and O(1) space complexity

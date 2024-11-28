@@ -88,6 +88,49 @@ class LinkedList {
     }
   }
 
+  // (4) => delete a node by value
+  removeNodeWithValue(data) {
+    if (!this.head) {
+      return;
+    }
+
+    if (this.head.data == data) {
+      this.head = this.head.next;
+      this.size--;
+    }
+
+    let current = this.head;
+    while (current.next) {
+      if (current.next.data == data) {
+        current.next = current.next.next;
+        this.size--;
+        return;
+      }
+      current = current.next;
+    }
+  }
+
+  // (5) => Search for a Value
+  isValueFound(data) {
+    if (!this.head) {
+      return;
+    }
+
+    if (this.head.data == data) {
+      return true;
+    }
+
+    let current = this.head;
+    while (current.next) {
+      if (current.next.data == data) {
+        return true;
+      }
+      current = current.next;
+    }
+
+    return false;
+  }
+
   printList(head = null) {
     if (head || !this.head) {
       return;
@@ -105,15 +148,17 @@ const ll = new LinkedList();
 
 ll.insertLast(100);
 ll.insertLast(200);
-// ll.insertLast(250);
+ll.insertLast(250);
 ll.insertLast(300);
 ll.insertLast(400);
 
 // ll.getMiddleNodeValue();
 
 // ll.reverseList();
-ll.printList();
+// ll.printList();
 console.log("-------------");
-ll.removeMiddle();
+// ll.removeMiddle();
+// ll.removeNodeWithValue(600);
+console.log(ll.isValueFound(250));
 console.log("-------------");
 ll.printList();

@@ -1,0 +1,31 @@
+Reversing a Singly Linked List
+------------------------------
+A singly linked list has nodes with a next pointer. The goal is to reverse the direction of these pointers.
+
+Algorithm:
+    1) Initialize three pointers:
+        => 'prev' as null (to track the previous node),
+        => 'current' as the head of the list (to track the current node),
+        => 'next' as null (to track the next node temporarily).
+    2) Traverse the list:
+        => Save the next node: next = current.next.
+        => Reverse the current node's pointer: current.next = prev.
+        => Move prev to current and current to next.
+    3) Update the head of the list to prev (the new head).
+
+-code-
+
+function reverseSinglyLinkedList(head) {
+    let = current = head;
+    let prev = null
+
+    while (current != null) {
+        const nextNode = current.new;
+        current.next = prev;
+        prev = current;
+        current = nextNode;
+    }
+    return prev
+}
+
+Its very efficient and operate in o(n) time complexity and O(1) space complexity
