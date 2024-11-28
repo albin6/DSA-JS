@@ -17,3 +17,24 @@ Disadvantages:
 Time Complexity:
     => Best Case: O(1) (if the element is at the first position).
     => Worst Case: O(n) (if the element is at the last position or not present).
+
+Binary Search
+-------------
+Binary search is a much faster search method that works on sorted arrays. It repeatedly divides the search interval in half.
+
+How It Works:
+    Check the middle element of the array.
+    If it matches the target, return its index.
+    If the target is smaller than the middle element, search in the left half.
+    If the target is larger, search in the right half.
+    Repeat the process until the search interval is empty.
+
+Advantages:
+    Much faster for large datasets as it reduces the search space exponentially.
+    Time complexity is O(logn).
+Disadvantages:
+    Works only on sorted datasets.
+    Requires additional effort to sort the dataset if it is unsorted.
+    Time Complexity:
+        Best Case: O(1) (if the middle element is the target).
+        Worst Case: O(logn).
