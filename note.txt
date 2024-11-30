@@ -11,3 +11,11 @@ A doubly linked list (DLL) is a special type of linked list in which each node c
    1) data: to contain respective node value
    2) next: to link the next node with the default value as null.
    3) prev: to link the previous node with the default value as null.
+
+
+
+remove a letter from a string using recursion
+remove an element from doubly linked list
+return the increasing sub array from an array
+tail recursion
+ 
