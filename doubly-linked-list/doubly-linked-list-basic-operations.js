@@ -66,6 +66,41 @@ class DoublyLinkedList {
     }
   }
 
+  // reverse doubly linked list
+  reverseList() {
+    let current = this.head
+    let newHead = null
+    while (current) {
+      [current.next, current.prev] = [current.prev, current.next]
+      newHead = current;
+      current = current.prev
+    }
+    return newHead
+  }
+
+  // print list
+  printListReverses(newHead) {
+    while (newHead) {
+      console.log(newHead.data)
+      newHead = newHead.next
+    }
+  }
+
+  removeMiddleNode() {
+    let slow = this.head;
+    let fast = this.head;
+
+    while (fast !== null && fast.next !== null && fast.next.next !== null) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+
+    const nextNode = slow.next
+
+    nextNode.prev = slow.prev.next
+    slow.prev.next = nextNode
+  }
+
   // remove last
   removeLast() {
     if (!this.head) {
@@ -100,10 +135,19 @@ ll.insertFirst(100);
 
 ll.insertLast(300);
 ll.insertLast(400);
+ll.insertLast(500);
 
 ll.printList();
 console.log("---------");
+// // ll.removeLast();
 // ll.removeLast();
-ll.removeLast();
-ll.printList();
+// ll.printList();
 // ll.printListReverse();
+// const newH = ll.reverseList()
+
+// ll.printListReverses(newH)
+
+
+ll.removeMiddleNode()
+
+ll.printList();

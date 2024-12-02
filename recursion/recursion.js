@@ -121,3 +121,17 @@ function getTheSubsets(nums) {
 const powerSet = getTheSubsets([1, 2, 3]);
 
 console.log(powerSet);
+
+// ----------------------------------------------------------------------------------------------
+// given string is palindrome or not
+function isStringPalidrome(str) {
+  if (str.length == 0) {
+    return true
+  }
+  if (str[0] !== str[str.length - 1]) {
+    return false
+  }
+  return isStringPalidrome(str.slice(1, str.length - 1))
+}
+
+// console.log(isStringPalidrome('haiah'))

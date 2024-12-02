@@ -152,13 +152,14 @@ ll.insertLast(250);
 ll.insertLast(300);
 ll.insertLast(400);
 
+ll.printList();
+
+console.log("-------------");
 // ll.getMiddleNodeValue();
 
 // ll.reverseList();
-// ll.printList();
-console.log("-------------");
 // ll.removeMiddle();
 // ll.removeNodeWithValue(600);
 console.log(ll.isValueFound(250));
-console.log("-------------");
-ll.printList();
+// console.log("-------------");
+// ll.printList();

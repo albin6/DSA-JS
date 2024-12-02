@@ -16,7 +16,7 @@ function truncateTheText(str, maxlength) {
 const stringAfterTructating = truncateTheText("hellobrooo", 6); // hellobr...
 const stringAfterTructatingEdgeCase = truncateTheText("hello", 6); // hello...
 
-console.log(stringAfterTructating);
+// console.log(stringAfterTructating);
 
 // (2) => palindrome number
 
@@ -33,5 +33,20 @@ function isPalindrome(num) {
 const is121Palindrome = isPalindrome(121);
 const is12Palindrome = isPalindrome(12);
 
-console.log(is121Palindrome);
-console.log(is12Palindrome);
+// console.log(is121Palindrome);
+// console.log(is12Palindrome);
+
+// (3) => pascalcase to snake case
+function convertPascalCaseToSnakeCase(str) {
+  let str1 = ''
+  for (var i = 0; i < str.length; i++) {
+    const char = str[i]
+    if (char === str[i].toUpperCase() && i != 0) {
+      str1 += '_'
+    }
+    str1 += char.toLowerCase()
+  }
+  console.log(str1)
+}
+
+// convertPascalCaseToSnakeCase('PascalCase')

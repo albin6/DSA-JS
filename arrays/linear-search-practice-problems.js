@@ -56,7 +56,7 @@ function occurenceOfAnElement(arr, target) {
   return count;
 }
 
-// console.log(occurenceOfAnElement(arr, 2));
+console.log(occurenceOfAnElement(arr, 2));
 
 // (5) - Find the Missing Number
 function findMissingNumber() {}
@@ -104,4 +104,24 @@ const matrix = [
 ];
 const target = 7;
 
-console.log(searchMatrix(matrix, target));
+// console.log(searchMatrix(matrix, target));
+
+// count majority element 
+function countMajorityElement(arr) {
+  const elementCount = {}
+  for (var i = 0; i < arr.length; i++) {
+    if (elementCount[arr[i]]) {
+      elementCount[arr[i]]++
+    } else {
+      elementCount[arr[i]] = 1
+    }
+  }
+  for(let key in elementCount) {
+    if(elementCount[key] > (arr.length/2)) {
+      return key
+    }
+  }
+  return -1
+}
+
+console.log(countMajorityElement([2, 3, 3]))
