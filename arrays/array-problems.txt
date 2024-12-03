@@ -1,0 +1,18 @@
+problems
+--------
+1) find the first non-repeating/  first unique element.
+2) find the second largest in an array.
+3) find the third largest in an array.
+4) remove duplicates from an array.
+5) rotate an array k-times.
+6) find max and min numbers in an array. (O(n) - TC).
+7) find first and last occurence of an element in an array.
+8) occurence of a given element (return the count).
+9) search an element in a Matrix
+    eg : const matrix = [
+                [3, 5, 1],
+                [8, 2, 7],
+                [6, 4, 9],
+            ];
+        const target = 7;
+10) count the majority element (element that appears more that n/2 times, (n - length of array))
