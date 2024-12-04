@@ -1,23 +1,25 @@
 // Merge Sort: Efficient, stable sort with O(n log n)
-function mergeSort(arr) {
-  if (arr.length <= 1) return arr;
-
-  const mid = Math.floor(arr.length / 2);
-  const left = mergeSort(arr.slice(0, mid));
-  const right = mergeSort(arr.slice(mid));
+function mergeSort(nums) {
+  if (nums.length <= 1) {
+    return nums;
+  }
+  const middle = Math.floor(nums.length / 2);
+  const left = mergeSort(nums.slice(0, middle));
+  const right = mergeSort(nums.slice(middle));
 
   return merge(left, right);
 }
 
 function merge(left, right) {
-  const sorted = [];
+  const sortedArray = [];
   while (left.length && right.length) {
     if (left[0] < right[0]) {
-      sorted.push(left.shift());
+      sortedArray.push(left.shift());
     } else {
-      sorted.push(right.shift());
+      sortedArray.push(right.shift());
     }
   }
-  return [...sorted, ...left, ...right];
+  return [...sortedArray, ...left, ...right];
 }
+
 console.log(mergeSort([64, 34, 25, 12, 22, 11, 90]));
