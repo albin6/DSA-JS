@@ -1,1 +1,30 @@
-PUSH, POP and Display elements in Stack 
+Stack
+-----
+A stack is a linear data structure that follows the Last In, First Out (LIFO) principle, 
+meaning the last element added to the stack will be the first one to be removed. 
+
+Core Operations:
+----------------
+=> Push: Add an element to the top of the stack.
+=> Pop: Remove the element from the top of the stack.
+=> Peek/Top: View the top element without removing it.
+=> isEmpty: Check if the stack is empty.
+
+Applications:
+-------------
+=> Function call management (call stack).
+=> Undo/Redo functionality.
+=> Balancing parentheses.
+=> Depth-First Search (DFS).
+
+
+A MinStack is a specialized stack data structure that, in addition to standard stack operations (push, pop, peek), 
+allows for retrieving the minimum element in constant time (O(1)). It is often used in scenarios where you need to 
+track the smallest element in a stack efficiently.
+
+Key Features:
+-------------
+=> Push - Add an element to the stack.
+=> Pop - Remove the top element from the stack.
+=> Peek - Retrieve the top element without removing it.
+=> GetMin - Retrieve the minimum element in the stack in O(1) time.
