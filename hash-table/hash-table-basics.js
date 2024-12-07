@@ -1,27 +1,68 @@
 class HashTable {
-  constructor(size = 50) {
-    (this.size = size), (this.buckets = new Array(this.size));
+  constructor() {
+    this.table = new Array(10);
+    this.size = 0;
   }
   hash(key) {
     let hash = 0;
-    const PRIME = 31;
     for (let i = 0; i < key.length; i++) {
-      const char = key.charCodeAt(i);
-      hash = (hash * PRIME + char) % this.size;
+      hash += key.charCodeAt(i);
     }
-    return hash;
+    return hash % this.getSize();
   }
   set(key, value) {
     const index = this.hash(key);
-    const bucket = this.buckets[index];
-
-    for (let i = 0; i < bucket.length; i++) {
-      const [storedKey] = bucket[i];
-      if (storedKey == key) {
-        bucket[i][1] = value;
-        return;
+    if (this.table[index]) {
+      for (let i = 0; i < this.table[index].length; i++) {
+        if (this.table[index][i][0] == key) {
+          this.table[index][i][1] = value;
+          return;
+        }
+      }
+      this.table[index].push([key, value]);
+    } else {
+      this.table[index] = [[key, value]];
+    }
+    this.size++;
+  }
+  get(key) {
+    const index = this.hash(key);
+    if (this.table[index]) {
+      for (let i = 0; i < this.table[index].length; i++) {
+        if (this.table[index][i][0] == key) {
+          return this.table[index][i];
+        }
       }
     }
-    bucket.push([key, value]);
+    return false;
+  }
+  remove(key) {
+    const index = this.hash(key);
+    if (this.table[index]) {
+      for (let i = 0; i < this.table[index].length; i++) {
+        if (this.table[index][i][0] == key) {
+          this.table[index].splice(i, 1);
+          return;
+        }
+      }
+    }
+    return false;
+  }
+  getSize() {
+    return this.table.length;
+  }
+  display() {
+    this.table.forEach((item) => {
+      const chainedItem = item.map(([key, value]) => `[${key}, ${value}]`);
+      console.log(chainedItem);
+    });
   }
 }
+
+const ht = new HashTable();
+
+ht.set("name", "Albin");
+ht.set("anme", "Albin");
+ht.set("age", 21);
+
+ht.display();
