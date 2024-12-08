@@ -1,0 +1,33 @@
+Basic Hash Table Operations:
+----------------------------
+1) Create a hash table (using an object) that stores the names of students as keys and their grades as values. Write functions to:
+
+=> Add a new student and their grade.
+=> Retrieve the grade of a student.
+=> Delete a student from the hash table.
+=> Check if a student exists in the hash table.
+
+2) Check for Duplicates in an Array:
+
+=> Write a function that takes an array of numbers and returns true if there are any duplicates,
+   and false otherwise, using a hash table to track seen numbers.
+
+3) Count Character Frequencies:
+
+=> Write a function that takes a string and returns an object where the keys are characters, 
+   and the values are the frequency of those characters in the string.
+
+4) Two Sum Problem:
+
+=> Given an array of integers and a target sum, write a function that returns the indices of 
+   the two numbers that add up to the target. Use a hash table to optimize the solution.
+
+5) Find the First Non-Repeating Character:
+
+=> Write a function that takes a string and returns the first non-repeating character. 
+   Use a hash table to count occurrences of each character.
+
+6) Intersection of Two Arrays:
+
+=> Write a function that takes two arrays and returns an array of their intersection.  
+   You should use a hash table to store the elements of one array and find the common elements efficiently.
