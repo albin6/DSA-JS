@@ -34,6 +34,9 @@ function checkForDuplicates(nums) {
 }
 
 // console.log(checkForDuplicates([2, 3, 1, 8, 4, 1, 5]));
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
 
 class StudentHashTable {
   constructor() {
@@ -72,21 +75,47 @@ class StudentHashTable {
     const index = this.hash(name);
     const bucket = this.table[index];
 
-    for (let i = 0; i < bucket.length; i++) {}
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] == name) {
+        bucket.splice(i, 1);
+        return;
+      }
+    }
+    return false;
   }
   has(name) {
     const index = this.hash(name);
-    if (this.table[index]) {
-      return true;
-    } else {
-      return false;
+    const bucket = this.table[index];
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] == name) {
+        return true;
+      }
     }
+    return false;
   }
 }
 
 function studentGrade() {
   const sHT = new StudentHashTable();
-  console.log(sHT.has("albin"));
+  sHT.set("tintu", "C");
+  sHT.set("tony", "B");
+  sHT.set("yont", "A");
+  hasStudent(sHT, "abin");
+  hasStudent(sHT, "tony");
+  hasStudent(sHT, "yont");
+  sHT.remove("yont");
+  hasStudent(sHT, "yont");
+  console.log(JSON.stringify(sHT));
+}
+
+function hasStudent(sHT, name) {
+  sHT.has(name)
+    ? console.log(name + " Found")
+    : console.log(name + " Not Found");
 }
 
 studentGrade();
+
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
