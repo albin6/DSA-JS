@@ -1,0 +1,62 @@
+1. Tree Data Structure Overview
+-------------------------------
+Definition:
+ - A Tree is a hierarchical data structure consisting of nodes connected by edges. It has:
+
+*) Root: The top node in the hierarchy.
+*) Parent: A node that has child nodes.
+*) Child: A node derived from a parent.
+*) Leaf: A node without children.
+*) Edge: A connection between two nodes.
+*) Height: The length of the longest path from the root to a leaf.
+
+
+2. Types of Trees
+-----------------
+
+=> General Tree:
+    - Each node can have any number of children.
+    - Example: Folder structures.
+=> Binary Tree:
+    - Each node has at most two children (left and right).
+    - Subtypes:
+        * Full Binary Tree: Each node has 0 or 2 children.
+        * Complete Binary Tree: All levels are fully filled except possibly the last.
+        * Perfect Binary Tree: All internal nodes have 2 children, and all leaves are at the same level.
+=> Binary Search Tree (BST):
+    - A binary tree with the property: left subtree < root < right subtree.
+=> AVL Tree:
+    - A self-balancing BST where the height difference between left and right subtrees is at most 1.
+=> Red-Black Tree:
+    - A self-balancing BST with additional constraints to maintain balance using node coloring (red or black).
+=> Trie:
+    - A tree for storing strings, useful for prefix-based searches.
+=> Heap:
+    - A complete binary tree used for priority queues.
+
+3. Operations on Trees
+----------------------
+
+Basic Operations:
+=> Traversal:
+    - Depth-First Search (DFS):
+        - Preorder: Root → Left → Right.
+        - Inorder: Left → Root → Right.
+        - Postorder: Left → Right → Root.
+    - Breadth-First Search (BFS):
+        - Level order traversal (processes all nodes level by level).
+
+=> Insertion:
+    - Add a new node in the correct position based on the type of tree.
+
+=> Deletion:
+    - Remove a node and restructure the tree to maintain its properties.
+
+=> Search:
+    - Find a node with a specific value using DFS or BFS.
+
+=> Height Calculation:
+    - Determine the height of the tree (max depth).
+
+=> Find Minimum/Maximum:
+    - Locate the smallest or largest value (especially in BSTs).
