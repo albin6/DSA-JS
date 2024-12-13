@@ -1,93 +1,63 @@
-class Node {
-  constructor(data) {
-    this.data = data;
+class BSTNode {
+  constructor(value) {
+    this.value = value;
     this.left = null;
     this.right = null;
   }
 }
 
-class BinarySearchTree {
+class BSTree {
   constructor() {
-    this.root = null;
+    this.root = [];
   }
-  addNode(data) {
-    const node = new Node(data);
-    if (!this.root) {
-      this.root = node;
-      return;
+  addNode(value) {
+    if (this.root) {
+      this.root = new BSTNode(value);
     }
     let current = this.root;
     while (true) {
-      if (current.data == data) {
-        return;
-      }
-      if (data < current.data) {
+      if (value < current.value) {
         if (!current.left) {
-          current.left = node;
+          current.left = new BSTNode(value);
           return;
         }
         current = current.left;
       } else {
         if (!current.right) {
-          current.right = node;
+          current.right = new BSTNode(value);
           return;
         }
         current = current.right;
       }
     }
   }
-  contains(data) {
-    if (!this.root) {
-      return false;
+  search(value, node = this.root) {
+    if (!node || node.value == value) {
+      return node;
     }
-    if (this.root.data == data) {
-      return true;
-    }
-    let current = this.root;
-    while (current) {
-      if (current.data == data) {
-        return true;
-      } else if (data < current.data) {
-        current = current.left;
-      } else {
-        current = current.right;
-      }
-    }
-    return false;
+    return value < node.value
+      ? this.search(value, node.left)
+      : this.search(value, node.right);
   }
-  deleteNode(data) {
-    if (!this.root) {
-      return;
+  preOrder(node = this.root) {
+    if (node) {
+      console.log(node.value);
+      this.preOrder(node.left);
+      this.preOrder(node.right);
     }
-    if (this.root.data == data) {
-      this.root = null;
-      return;
+  }
+  inOrder(node = this.root) {
+    if (node) {
+      this.preOrder(node.left);
+      console.log(node.value);
+      this.preOrder(node.right);
     }
-    let current = this.root;
-    while (current) {
-      if (data < current.data) {
-        current = current.left;
-      } else if (data > current.data) {
-        current = current.right;
-      } else {
-        console.log("in else", current);
-        current = null;
-        return;
-      }
+  }
+  postOrder(node = this.root) {
+    if (node) {
+      this.postOrder(node.left);
+      this.postOrder(node.right);
+      console.log(node.value);
     }
   }
 }
-
-const bst = new BinarySearchTree();
-
-bst.addNode(20);
-bst.addNode(10);
-bst.addNode(25);
-bst.addNode(15);
-
-console.log(JSON.stringify(bst));
-
-// console.log(bst.contains(10));
-bst.deleteNode(10);
-
-console.log(JSON.stringify(bst));

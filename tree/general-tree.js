@@ -16,15 +16,13 @@ class Tree {
     }
   }
   search(value, node = this.root) {
-    if (node.value === value) {
+    if (node.value == value) {
       return node;
     }
     for (const child of node.children) {
-      const result = this.search(value, child);
-      if (result) {
-        return child;
-      }
+      return this.search(value, child);
     }
+
     return null;
   }
   dfs(node = this.root) {
@@ -35,13 +33,9 @@ class Tree {
   }
 }
 
-const tree = new Tree(10);
+const gtree = new Tree(20);
 
-tree.addNode(10, 5);
-tree.addNode(10, 6);
-tree.addNode(5, 20);
-tree.addNode(5, 100);
-tree.addNode(100, 55);
-tree.addNode(6, 30);
+gtree.addNode(20, 12);
+gtree.addNode(20, 50);
 
-tree.dfs();
+gtree.dfs(gtree.root);
