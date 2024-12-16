@@ -7,7 +7,7 @@ class BTNode {
 }
 
 class BTree {
-  constructora() {
+  constructor() {
     this.root = null;
   }
   insertNode(value) {
