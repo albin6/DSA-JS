@@ -78,7 +78,6 @@ class Heap {
   }
   update(index, value) {
     this.heap[index] = value;
-
     if (this.compare(this.parentIndex(index), index)) {
       this.bubbleUp(index);
     } else if (this.compare(index, this.leftChildIndex(index))) {

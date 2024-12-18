@@ -101,6 +101,24 @@ class BTree {
     const nodes = this.inOrderTraversal();
     return this.buildBST(nodes);
   }
+  findLCA(root, node1, node2) {
+    if (!root) {
+      return null;
+    }
+
+    if (root.value == node1 || root.value == node2) {
+      return root;
+    }
+
+    const left = this.findLCA(root.left, node1, node2);
+    const right = this.findLCA(root, right, node1, node2);
+
+    if (left !== null && right !== null) {
+      return root;
+    }
+
+    return left !== null ? left : right;
+  }
 }
 
 class BSTNode {
@@ -239,11 +257,11 @@ class BSTree {
     return nodes;
   }
   rebuildBalancedBST(nodes) {
-    if (!nodes) {
+    if (nodes.length === 0) {
       return nodes;
     }
     const mid = Math.floor(nodes.length / 2);
-    const root = nodes[mid];
+    const root = new BSTNode(nodes[mid]);
     root.left = this.rebuildBalancedBST(nodes.slice(0, mid));
     root.right = this.rebuildBalancedBST(nodes.slice(mid + 1));
     return root;
@@ -251,5 +269,20 @@ class BSTree {
   balancingBST() {
     const nodes = this.inOrderTraversalBST(this.root, []);
     return this.rebuildBalancedBST(nodes);
+  }
+  findLCAinBST(root, node1, node2) {
+    if (!root) {
+      return null;
+    }
+
+    if (node1 < root.value && node2 < root.value) {
+      return this.findLCAinBST(root.left, node1, node2);
+    }
+
+    if (node2 > root.value && node2 > root.value) {
+      return this.findLCAinBST(root.right, node1, node2);
+    }
+
+    return root;
   }
 }
