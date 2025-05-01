@@ -42,6 +42,43 @@ class Graph {
       (v) => v !== vertex1
     );
   }
+
+  bfs1(start) {
+    const visitedVertices = new Set();
+    const results = [];
+    const queue = [start];
+    while (queue.length) {
+      const vertex = queue.shift();
+      if (!visitedVertices.has(vertex)) {
+        visitedVertices.add(vertex);
+        results.push(vertex);
+        this.adjacencyList[vertex].forEach((v) => {
+          if (!visitedVertices.has(v)) {
+            queue.push(v);
+          }
+        });
+      }
+    }
+  }
+
+  bfs2(start) {
+    const results = [];
+    const visitedVertices = new Set();
+    const queue = [start];
+    while (queue.length) {
+      const vertex = queue.shift();
+      if (!visitedVertices.has(vertex)) {
+        visitedVertices.add(vertex);
+        results.push(vertex);
+        this.adjacencyList[vertex].forEach((v) => {
+          if (!visitedVertices.has(v)) {
+            queue.push(v);
+          }
+        });
+      }
+    }
+  }
+
   bfs(start) {
     const visitedVertices = new Set();
     const results = [];
@@ -60,6 +97,26 @@ class Graph {
     }
     return results;
   }
+
+  dfs1(start) {
+    const results = [];
+    const visitedVertices = new Set();
+    const stack = [start];
+
+    while (stack.length) {
+      const vertex = stack.pop();
+      if (!visitedVertices.has(vertex)) {
+        visitedVertices.add(vertex);
+        results.push(vertex);
+        this.adjacencyList[vertex].forEach((v) => {
+          if (!visitedVertices.has(v)) {
+            stack.push(v);
+          }
+        });
+      }
+    }
+  }
+
   dfsIterative(start) {
     const results = [];
     const visitedVertices = new Set();
