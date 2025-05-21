@@ -10,21 +10,38 @@ class Graph {
   }
 
   addEdge(vertexOne, vertexTwo) {
+    this.addVertex(vertexOne);
+    this.addVertex(vertexTwo);
     this.adjacencyList[vertexOne].push(vertexTwo);
   }
 
-  hasCycle(start) {
-    const visitedVertices = new Set();
-    const queue = [start];
-    while (queue.length) {
-      const vertex = queue.shift();
-      if (!visitedVertices.has(vertex)) {
-        visitedVertices.add(vertex);
-        this.adjacencyList[vertex].forEach((v) => {
-          queue.push(v);
-        });
-      } else {
-        return "has cycle";
+  hasCycleUtil(vertex, visited, recStack) {
+    visited.add(vertex);
+    recStack.add(vertex);
+
+    for (const neighbor of this.adjacencyList[vertex]) {
+      if (!visited.has(neighbor)) {
+        if (this.hasCycleUtil(neighbor, visited, recStack)) {
+          return true;
+        }
+      } else if (recStack.has(neighbor)) {
+        return true;
+      }
+    }
+
+    recStack.delete(vertex);
+    return false;
+  }
+
+  hasCycle() {
+    const visited = new Set();
+    const recStack = new Set();
+
+    for (const vertex in this.adjacencyList) {
+      if (!visited.has(vertex)) {
+        if (this.hasCycleUtil(vertex, visited, recStack)) {
+          return "has cycle";
+        }
       }
     }
     return "no cycle";
@@ -44,4 +61,4 @@ graph.addEdge("B", "C");
 
 console.dir(graph.adjacencyList, { depth: null });
 
-console.log(graph.hasCycle("A"));
+console.log(graph.hasCycle());
