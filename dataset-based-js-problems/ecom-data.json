@@ -1,0 +1,30 @@
+{
+  "orders": [
+    {
+      "orderId": "O1001",
+      "userId": "U1",
+      "items": [
+        { "productId": "P1", "name": "Laptop", "price": 800, "quantity": 1 },
+        { "productId": "P2", "name": "Mouse", "price": 20, "quantity": 2 }
+      ],
+      "status": "delivered"
+    },
+    {
+      "orderId": "O1002",
+      "userId": "U2",
+      "items": [
+        { "productId": "P3", "name": "Keyboard", "price": 50, "quantity": 1 }
+      ],
+      "status": "cancelled"
+    },
+    {
+      "orderId": "O1003",
+      "userId": "U1",
+      "items": [
+        { "productId": "P1", "name": "Laptop", "price": 800, "quantity": 1 },
+        { "productId": "P4", "name": "Monitor", "price": 200, "quantity": 2 }
+      ],
+      "status": "delivered"
+    }
+  ]
+}
