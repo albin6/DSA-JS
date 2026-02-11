@@ -1,0 +1,699 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Student Management Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-background-light dark:bg-background-dark text-[#0d141b] dark:text-white h-screen overflow-hidden flex font-display antialiased"
+  >
+    <aside
+      class="hidden md:flex flex-col w-64 bg-slate-50 dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-700 h-full flex-shrink-0"
+    >
+      <div class="flex flex-col h-full justify-between p-4">
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center gap-3 px-2">
+            <div
+              class="bg-primary/10 flex items-center justify-center rounded-lg size-10 text-primary"
+            >
+              <span class="material-symbols-outlined">school</span>
+            </div>
+            <h1 class="text-lg font-bold tracking-tight">EduManager</h1>
+          </div>
+          <nav class="flex flex-col gap-2">
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group"
+              href="#"
+            >
+              <span class="material-symbols-outlined">grid_view</span>
+              <span class="text-sm font-medium">Dashboard</span>
+            </a>
+            <a
+              class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:text-primary dark:bg-primary/20"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-primary"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >people</span
+              >
+              <span class="text-sm font-semibold">Students</span>
+            </a>
+          </nav>
+        </div>
+        <div
+          class="mt-auto pt-4 border-t border-slate-200 dark:border-slate-700"
+        >
+          <a
+            class="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            href="#"
+          >
+            <div
+              class="h-10 w-10 rounded-full bg-slate-200 bg-cover bg-center"
+              data-alt="User profile avatar"
+              style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD6tYgFKx3S2xYoduvuhAwiUsvZ0WVm6FroRIM3wCwaaV_rNzFnumsWsLVbJ5Cn_bK7VoDH7HkUi2YlrxzagShKBoRbjtgSH1DuS3SVV4y7P-U4jmB1UEInwJHW0WMwU6Sa97oi04e_ySnMowGBwo0fLHTUom7m7w6baC3MsxQbhHcwnMXSPIO9SXzZxJMywxldX0Rcq8xE7ZnlX5Y8DLp5Io2R_C56wf9dqBjuSlg9OeRBl8OzTYqW3_mWBDMYkQBIkR66AiosgdfX&quot;);
+              "
+            ></div>
+            <div class="flex-1 min-w-0">
+              <p
+                class="text-sm font-medium text-slate-900 dark:text-white truncate"
+              >
+                Tom Cook
+              </p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 truncate">
+                Admin
+              </p>
+            </div>
+            <span class="material-symbols-outlined text-slate-400">logout</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+    <div
+      class="flex-1 flex flex-col h-full min-w-0 overflow-hidden bg-background-light dark:bg-background-dark"
+    >
+      <header
+        class="h-16 flex items-center justify-between px-6 bg-white dark:bg-[#1a2632] border-b border-slate-200 dark:border-slate-700 shrink-0 z-10"
+      >
+        <button
+          class="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-lg"
+        >
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="flex-1 flex justify-start max-w-2xl px-4 mr-auto">
+          <div class="relative w-full max-w-md">
+            <div
+              class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+            >
+              <span class="material-symbols-outlined text-slate-400"
+                >search</span
+              >
+            </div>
+            <input
+              class="block w-full pl-10 pr-3 py-2 border-none rounded-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 sm:text-sm transition-shadow"
+              placeholder="Search..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <button
+            class="relative p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
+          >
+            <span class="material-symbols-outlined">notifications</span>
+            <span
+              class="absolute top-2 right-2 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-[#1a2632]"
+            ></span>
+          </button>
+          <div
+            class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm cursor-pointer"
+          >
+            TC
+          </div>
+        </div>
+      </header>
+      <main class="flex-1 overflow-auto p-6 md:p-8">
+        <div class="container mx-auto flex flex-col gap-6">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+          >
+            <div>
+              <h1 class="text-2xl font-bold text-slate-900 dark:text-white">
+                Student Management
+              </h1>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                Manage your students, update their status, and view details.
+              </p>
+            </div>
+            <button
+              class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-primary/30"
+            >
+              <span class="material-symbols-outlined text-[20px]">add</span>
+              Add Student
+            </button>
+          </div>
+          <div
+            class="bg-white dark:bg-[#1a2632] p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between"
+          >
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+              <div class="relative w-full sm:w-64">
+                <input
+                  class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                  placeholder="Filter by name..."
+                  type="text"
+                />
+                <span
+                  class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[20px]"
+                  >filter_list</span
+                >
+              </div>
+              <select
+                class="w-full sm:w-40 px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary cursor-pointer"
+              >
+                <option value="">All Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+              <span
+                class="text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap hidden sm:inline"
+                >Sort by:</span
+              >
+              <select
+                class="w-full sm:w-auto px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary cursor-pointer"
+              >
+                <option>Newest First</option>
+                <option>Oldest First</option>
+                <option>Name (A-Z)</option>
+              </select>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col"
+          >
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr
+                    class="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700"
+                  >
+                    <th
+                      class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider w-12"
+                    >
+                      <input
+                        class="rounded border-slate-300 text-primary focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                    >
+                      Student Name
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                    >
+                      Phone
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                    >
+                      Email
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-center"
+                    >
+                      Program Status
+                    </th>
+                    <th
+                      class="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right"
+                    >
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                  <tr
+                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
+                  >
+                    <td class="px-6 py-4">
+                      <input
+                        class="rounded border-slate-300 text-primary focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-9 w-9 rounded-full bg-slate-100 flex-shrink-0 bg-cover bg-center"
+                          data-alt="Student avatar"
+                          style="
+                            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDEbVFvD6x4KVMv6jaRoPE8P-t84faw2XVkRyhQA6hwjhss1TEnkaKHvCGPeW1Ov8PhgbvQ8wiJ34miitVbpJrctUwW2f8z3iIhVJW-JCXOgvxXnI5q63gN_ZLr90YrBNaDBRcFQvs1tP-tuOZhr-fqNqUgjza2k4Sb2-7Hvv-notPLTpfwn9j0AlwRvHzSedzI-uuyaJTCuOwcwlXBC2A_DKppo8nDeS0BTFmxkhG-gj7vIH1qxy1pZ1JWweuWanmxwT79ExcqEjQp&quot;);
+                          "
+                        ></div>
+                        <div>
+                          <div
+                            class="text-sm font-medium text-slate-900 dark:text-white"
+                          >
+                            Alice Johnson
+                          </div>
+                          <div
+                            class="text-xs text-slate-500 dark:text-slate-400"
+                          >
+                            ID: #ST-001
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      +1 (555) 0123
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      alice@example.com
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
+                      >
+                        Active
+                      </span>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                    >
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >visibility</span
+                        >
+                      </button>
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10 ml-2"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >more_vert</span
+                        >
+                      </button>
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
+                  >
+                    <td class="px-6 py-4">
+                      <input
+                        class="rounded border-slate-300 text-primary focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-9 w-9 rounded-full bg-slate-100 flex-shrink-0 bg-cover bg-center"
+                          data-alt="Student avatar"
+                          style="
+                            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCmSXXZWTQD6BdudZcjCc1eO7_eNVn0nt9BAZEFpn57l9bCJlxW1-4qs5PXI6HC425Nx2pxGTinOy2pzfkRpRUXKi6XpRyGRcDuWSvbw9L3cybUwvgJphrWL7nnLxhVkar2HzhB7XpU8tX5_4-rwn2-6vnTPNJzelI0jS3xf3Z7w6IqDctG9lWoZOIe-lfQMx0bYvBqq0vwx0zUpSAqqHUc3hULyJtxwAOqzRYLxSoMUD9g4eZV4OWPxtETYaJ2EWf6kD5uG7_iQJ09&quot;);
+                          "
+                        ></div>
+                        <div>
+                          <div
+                            class="text-sm font-medium text-slate-900 dark:text-white"
+                          >
+                            Bob Smith
+                          </div>
+                          <div
+                            class="text-xs text-slate-500 dark:text-slate-400"
+                          >
+                            ID: #ST-002
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      +1 (555) 0199
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      bob.smith@example.com
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400"
+                      >
+                        Inactive
+                      </span>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                    >
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >visibility</span
+                        >
+                      </button>
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10 ml-2"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >more_vert</span
+                        >
+                      </button>
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
+                  >
+                    <td class="px-6 py-4">
+                      <input
+                        class="rounded border-slate-300 text-primary focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-9 w-9 rounded-full bg-slate-100 flex-shrink-0 bg-cover bg-center"
+                          data-alt="Student avatar"
+                          style="
+                            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDMee7YsuktlLfABJvoLwwKMFmGxRstH3wfy2-g6-Cfx6ezI_7yJZ-MOvkEHZ-qsTsY6wBx6ZFLj9-v7I1hc0QvEdITaO50HXmRP1itvtG_wE_ZCVvdfV9GhQlZKLXsg5WySvJiHDZxAroMe1fjRZxONSZJ2K8hAkNzSs3OOVAdzku7IsyU1J6P9csS9q5V_P4HcCi1dOfTghZWbbKkT2BR4TxlvxKqFsuNsFYvmB_iiwyDPcAnLOGJi-ZFwY7tw6CTzQb1Dc3H6p_i&quot;);
+                          "
+                        ></div>
+                        <div>
+                          <div
+                            class="text-sm font-medium text-slate-900 dark:text-white"
+                          >
+                            Charlie Brown
+                          </div>
+                          <div
+                            class="text-xs text-slate-500 dark:text-slate-400"
+                          >
+                            ID: #ST-003
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      +1 (555) 0245
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      charlie@example.com
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
+                      >
+                        Active
+                      </span>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                    >
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >visibility</span
+                        >
+                      </button>
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10 ml-2"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >more_vert</span
+                        >
+                      </button>
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
+                  >
+                    <td class="px-6 py-4">
+                      <input
+                        class="rounded border-slate-300 text-primary focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-9 w-9 rounded-full bg-slate-100 flex-shrink-0 bg-cover bg-center"
+                          data-alt="Student avatar"
+                          style="
+                            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCAOI9DIa0-4-uPprqeLvXzEaGmhmKelmuQVIwxM01CvfJevFviBuqNoMW8TIoiceLdWznarLxXa5mWH_MHp4Sc79fRvPLwE1gbOaN4OQyp3qF1aNPuboh3eGYcwrc1w7VexDG0TY7lmcIoTEpVPF2w9N8L2Nq8Gf4iuHLY1GmGIh6vMBMCpnzGOIjWGp88Cl5An5C63XpVZHd35qNrgzHuehTUgPnHbSktACwRAyHSryerwKiwTm1tZFhUTDy7zH8oDCd2lBI_t8w5&quot;);
+                          "
+                        ></div>
+                        <div>
+                          <div
+                            class="text-sm font-medium text-slate-900 dark:text-white"
+                          >
+                            Dana White
+                          </div>
+                          <div
+                            class="text-xs text-slate-500 dark:text-slate-400"
+                          >
+                            ID: #ST-004
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      +1 (555) 0367
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      dana@example.com
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
+                      >
+                        Active
+                      </span>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                    >
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >visibility</span
+                        >
+                      </button>
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10 ml-2"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >more_vert</span
+                        >
+                      </button>
+                    </td>
+                  </tr>
+                  <tr
+                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group"
+                  >
+                    <td class="px-6 py-4">
+                      <input
+                        class="rounded border-slate-300 text-primary focus:ring-primary/20"
+                        type="checkbox"
+                      />
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-9 w-9 rounded-full bg-slate-100 flex-shrink-0 bg-cover bg-center"
+                          data-alt="Student avatar"
+                          style="
+                            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA89eK0B7QyQQfxN8zDjlXNkBRPxEFrYbwJHVSTLur9YT0tl4rTgfHnOX-rgyeYhumsQokLGaQMuyHLVHJ01CiMltFznh06zVW7Awb8HokF32ZyOTBjdXtXL6MUxNxPeZAOlLSm_Y0nYrPaz3foty7uaJtHB-vZV_gPBiFBB2OTIkQXh2oT8_PISyPRFCbNrorJDNyd5Nq0l8DUk4zlbS9nFYIuMOi3yK6pUKa8h0F0XoxsJuyNPhrB7ljIIFukvST08tFC3xwlhnI5&quot;);
+                          "
+                        ></div>
+                        <div>
+                          <div
+                            class="text-sm font-medium text-slate-900 dark:text-white"
+                          >
+                            Evan Wright
+                          </div>
+                          <div
+                            class="text-xs text-slate-500 dark:text-slate-400"
+                          >
+                            ID: #ST-005
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      +1 (555) 0489
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      evan@example.com
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400"
+                      >
+                        Inactive
+                      </span>
+                    </td>
+                    <td
+                      class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                    >
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >visibility</span
+                        >
+                      </button>
+                      <button
+                        class="text-slate-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-primary/10 ml-2"
+                      >
+                        <span class="material-symbols-outlined text-[20px]"
+                          >more_vert</span
+                        >
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="bg-white dark:bg-[#1a2632] px-6 py-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between"
+            >
+              <div
+                class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"
+              >
+                <div>
+                  <p class="text-sm text-slate-700 dark:text-slate-400">
+                    Showing
+                    <span class="font-medium text-slate-900 dark:text-white"
+                      >1</span
+                    >
+                    to
+                    <span class="font-medium text-slate-900 dark:text-white"
+                      >5</span
+                    >
+                    of
+                    <span class="font-medium text-slate-900 dark:text-white"
+                      >50</span
+                    >
+                    results
+                  </p>
+                </div>
+                <div>
+                  <nav
+                    aria-label="Pagination"
+                    class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                  >
+                    <a
+                      class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
+                      href="#"
+                    >
+                      <span class="sr-only">Previous</span>
+                      <span class="material-symbols-outlined text-[20px]"
+                        >chevron_left</span
+                      >
+                    </a>
+                    <a
+                      aria-current="page"
+                      class="z-10 bg-primary border-primary text-white relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                      href="#"
+                      >1</a
+                    >
+                    <a
+                      class="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                      href="#"
+                      >2</a
+                    >
+                    <a
+                      class="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                      href="#"
+                      >3</a
+                    >
+                    <span
+                      class="relative inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-400"
+                      >...</span
+                    >
+                    <a
+                      class="bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                      href="#"
+                      >10</a
+                    >
+                    <a
+                      class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
+                      href="#"
+                    >
+                      <span class="sr-only">Next</span>
+                      <span class="material-symbols-outlined text-[20px]"
+                        >chevron_right</span
+                      >
+                    </a>
+                  </nav>
+                </div>
+              </div>
+              <div class="flex sm:hidden justify-between w-full">
+                <a
+                  class="relative inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-600 text-sm font-medium rounded-md text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700"
+                  href="#"
+                >
+                  Previous
+                </a>
+                <a
+                  class="ml-3 relative inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-600 text-sm font-medium rounded-md text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700"
+                  href="#"
+                >
+                  Next
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
